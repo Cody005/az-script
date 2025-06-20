@@ -4,66 +4,46 @@
   "parameters": {
     "automationAccountName": {
       "type": "string",
-      "defaultValue": "azscriptautomation",
-      "metadata": {
-        "description": "Enter a unique name for the Automation Account"
-      }
+      "defaultValue": "azscriptautomation"
     },
     "runbookName": {
       "type": "string",
-      "defaultValue": "TenantMigrationReport",
-      "metadata": {
-        "description": "Name of the runbook to create"
-      }
+      "defaultValue": "TenantMigrationReport"
     },
     "location": {
       "type": "string",
-      "defaultValue": "swedencentral",
-      "allowedValues": [
-        "eastus",
-        "westus",
-        "westeurope",
-        "centralus",
-        "southeastasia",
-        "swedencentral"
-      ],
-      "metadata": {
-        "description": "Select the Azure region for deployment"
-      }
+      "defaultValue": "[resourceGroup().location]"
     }
   },
   "resources": [
     {
       "type": "Microsoft.Automation/automationAccounts",
-      "apiVersion": "2021-06-22",
+      "apiVersion": "2023-11-01",
       "name": "[parameters('automationAccountName')]",
       "location": "[parameters('location')]",
-      "sku": {
-        "name": "Free"
+      "identity": {
+        "type": "SystemAssigned"
       },
       "properties": {
-    "publicNetworkAccess": "Enabled"
-  }
-}
+        "publicNetworkAccess": "Enabled"
+      },
+      "sku": {
+        "name": "Free"
+      }
     },
     {
       "type": "Microsoft.Automation/automationAccounts/runbooks",
-      "apiVersion": "2021-06-22",
+      "apiVersion": "2023-11-01",
       "name": "[concat(parameters('automationAccountName'), '/', parameters('runbookName'))]",
       "dependsOn": [
         "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccountName'))]"
       ],
       "properties": {
         "runbookType": "PowerShell",
-        "logVerbose": false,
-        "logProgress": false,
+        "logVerbose": true,
+        "logProgress": true,
         "publishContentLink": {
-          "uri": "https://raw.githubusercontent.com/Cody005/az-script/main/TenantMigrationReport.ps1",
-          "contentHash": {
-            "algorithm": "sha256",
-            "value": "e812708b4bbf11e7c9ea61c90b6c69cc0ad93e6d617ff8b2c7d1a8998f7b659d"
-          },
-          "version": "1.0.0.0"
+          "uri": "https://raw.githubusercontent.com/Cody005/az-script/main/TenantMigrationReport.ps1"
         }
       }
     }
