@@ -12,10 +12,18 @@
     },
     "location": {
       "type": "string",
+      "defaultValue": "eastus",
+      "allowedValues": [
+        "eastus",
+        "westus",
+        "westeurope",
+        "centralus",
+        "southeastasia",
+        "swedencentral"
+      ],
       "metadata": {
-        "description": "Azure region where the resources will be deployed"
+        "description": "Select the Azure region for deployment"
       }
-      /* No defaultValue to enable location selection */
     }
   },
   "resources": [
