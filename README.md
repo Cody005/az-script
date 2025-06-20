@@ -1,1 +1,1 @@
-# az-script
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FCody005%2Faz-script%2Fmain%2Fazuredeploy.json)
