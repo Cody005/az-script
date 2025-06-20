@@ -12,7 +12,10 @@
     },
     "location": {
       "type": "string",
-      "defaultValue": "eastus"
+      "metadata": {
+        "description": "Azure region where the resources will be deployed"
+      }
+      /* No defaultValue to enable location selection */
     }
   },
   "resources": [
