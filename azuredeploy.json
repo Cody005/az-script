@@ -47,16 +47,19 @@
       "type": "Microsoft.Automation/automationAccounts/runbooks",
       "apiVersion": "2021-06-22",
       "name": "[concat(parameters('automationAccountName'), '/', parameters('runbookName'))]",
-      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccountName'))]"
       ],
       "properties": {
         "runbookType": "PowerShell",
-        "logVerbose": true,
-        "logProgress": true,
+        "logVerbose": false,
+        "logProgress": false,
         "publishContentLink": {
           "uri": "https://raw.githubusercontent.com/Cody005/az-script/main/TenantMigrationReport.ps1",
+          "contentHash": {
+            "algorithm": "sha256",
+            "value": "e812708b4bbf11e7c9ea61c90b6c69cc0ad93e6d617ff8b2c7d1a8998f7b659d"
+          },
           "version": "1.0.0.0"
         }
       }
