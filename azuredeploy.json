@@ -41,7 +41,10 @@
       "sku": {
         "name": "Free"
       },
-      "properties": {}
+      "properties": {
+    "publicNetworkAccess": "Enabled"
+  }
+}
     },
     {
       "type": "Microsoft.Automation/automationAccounts/runbooks",
