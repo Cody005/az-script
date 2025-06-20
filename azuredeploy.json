@@ -4,32 +4,15 @@
   "parameters": {
     "automationAccountName": {
       "type": "string",
-      "defaultValue": "azscriptautomation",
-      "metadata": {
-        "description": "Name of the Azure Automation Account to create"
-      }
+      "defaultValue": "azscriptautomation"
     },
     "runbookName": {
       "type": "string",
-      "defaultValue": "TenantMigrationReport",
-      "metadata": {
-        "description": "Name of the runbook to create"
-      }
+      "defaultValue": "TenantMigrationReport"
     },
     "location": {
       "type": "string",
-      "defaultValue": "eastus",
-      "allowedValues": [
-        "eastus",
-        "westus",
-        "westeurope",
-        "centralus",
-        "southeastasia",
-        "swedencentral"
-      ],
-      "metadata": {
-        "description": "Azure region for all resources"
-      }
+      "defaultValue": "swedencentral"
     }
   },
   "resources": [
@@ -38,9 +21,6 @@
       "apiVersion": "2021-06-22",
       "name": "[parameters('automationAccountName')]",
       "location": "[parameters('location')]",
-      "identity": {
-        "type": "SystemAssigned"
-      },
       "sku": {
         "name": "Free"
       },
