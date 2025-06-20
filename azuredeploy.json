@@ -40,8 +40,8 @@
       ],
       "properties": {
         "runbookType": "PowerShell",
-        "logVerbose": true,
-        "logProgress": true,
+        "logVerbose": false,
+        "logProgress": false,
         "publishContentLink": {
           "uri": "https://raw.githubusercontent.com/Cody005/az-script/main/TenantMigrationReport.ps1"
         }
