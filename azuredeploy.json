@@ -6,7 +6,7 @@
       "type": "string",
       "defaultValue": "azscriptautomation",
       "metadata": {
-        "description": "Name of the Azure Automation Account"
+        "description": "Enter a unique name for the Automation Account"
       }
     },
     "runbookName": {
@@ -28,7 +28,7 @@
         "swedencentral"
       ],
       "metadata": {
-        "description": "Azure region for deployment"
+        "description": "Select the Azure region for deployment"
       }
     }
   },
