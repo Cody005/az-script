@@ -4,15 +4,21 @@
   "parameters": {
     "automationAccountName": {
       "type": "string",
-      "defaultValue": "azscriptautomation"
+      "defaultValue": "azscriptautomation",
+      "metadata": {
+        "description": "Name of the Azure Automation Account to create"
+      }
     },
     "runbookName": {
       "type": "string",
-      "defaultValue": "TenantMigrationReport"
+      "defaultValue": "TenantMigrationReport",
+      "metadata": {
+        "description": "Name of the runbook to create"
+      }
     },
     "location": {
       "type": "string",
-      "defaultValue": "swedencentral",
+      "defaultValue": "eastus",
       "allowedValues": [
         "eastus",
         "westus",
@@ -29,20 +35,17 @@
   "resources": [
     {
       "type": "Microsoft.Automation/automationAccounts",
-      "apiVersion": "2024-10-23",
+      "apiVersion": "2021-06-22",
       "name": "[parameters('automationAccountName')]",
       "location": "[parameters('location')]",
       "sku": {
         "name": "Free"
       },
-      "properties": {
-        "publicNetworkAccess": "Enabled",
-        "disableLocalAuth": false
-      }
+      "properties": {}
     },
     {
       "type": "Microsoft.Automation/automationAccounts/runbooks",
-      "apiVersion": "2024-10-23",
+      "apiVersion": "2021-06-22",
       "name": "[concat(parameters('automationAccountName'), '/', parameters('runbookName'))]",
       "location": "[parameters('location')]",
       "dependsOn": [
