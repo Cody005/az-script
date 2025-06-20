@@ -12,7 +12,7 @@
     },
     "location": {
       "type": "string",
-      "defaultValue": "eastus",
+      "defaultValue": "swedencentral",
       "allowedValues": [
         "eastus",
         "westus",
@@ -29,17 +29,20 @@
   "resources": [
     {
       "type": "Microsoft.Automation/automationAccounts",
-      "apiVersion": "2021-06-22",
+      "apiVersion": "2024-10-23",
       "name": "[parameters('automationAccountName')]",
       "location": "[parameters('location')]",
-      "properties": {},
       "sku": {
         "name": "Free"
+      },
+      "properties": {
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false
       }
     },
     {
       "type": "Microsoft.Automation/automationAccounts/runbooks",
-      "apiVersion": "2021-06-22",
+      "apiVersion": "2024-10-23",
       "name": "[concat(parameters('automationAccountName'), '/', parameters('runbookName'))]",
       "location": "[parameters('location')]",
       "dependsOn": [
