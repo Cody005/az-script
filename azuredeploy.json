@@ -25,10 +25,12 @@
         "type": "SystemAssigned"
       },
       "properties": {
-        "publicNetworkAccess": "true"
-      },
-      "sku": {
-        "name": "Free"
+        "publicNetworkAccess": true,
+        "sku": {
+          "name": "Free",
+          "capacity": 0,
+          "family": "AutomationAccount"
+        }
       }
     },
     {
@@ -38,10 +40,11 @@
       "dependsOn": [
         "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccountName'))]"
       ],
+      "location": "[parameters('location')]",
       "properties": {
         "runbookType": "PowerShell",
-        "logVerbose": false,
-        "logProgress": false,
+        "logVerbose": true,
+        "logProgress": true,
         "publishContentLink": {
           "uri": "https://raw.githubusercontent.com/Cody005/az-script/main/TenantMigrationReport.ps1"
         }
