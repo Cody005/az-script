@@ -32,7 +32,10 @@
       "apiVersion": "2021-06-22",
       "name": "[parameters('automationAccountName')]",
       "location": "[parameters('location')]",
-      "properties": {}
+      "properties": {},
+      "sku": {
+        "name": "Free"
+      }
     },
     {
       "type": "Microsoft.Automation/automationAccounts/runbooks",
